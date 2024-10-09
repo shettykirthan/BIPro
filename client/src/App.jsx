@@ -17,9 +17,9 @@ function App() {
             <p className="app-description">
               Transform your data into actionable insights with our powerful analytics tool.
             </p>
-            <button className="get-started-btn" style={{ padding:"1rem",fontSize: "25px", fontFamily: "sans-serif" }}>
+            <a href='http://localhost:8501/'><button className="get-started-btn" style={{ padding:"1rem",fontSize: "25px", fontFamily: "sans-serif" }}>
               Get Started
-            </button>
+            </button> </a>
           </div>
           <div className="column hide-on-mobile">
             <Lottie animationData={welcomeGIF} />
@@ -94,9 +94,9 @@ function App() {
         <div className="get-started-section">
           <h2 className="titles">Ready To Boost Your Business?</h2>
           <center>
-            <button className="lastbutton" style={{ fontSize: '19px', fontFamily: 'sans-serif' }}>
+            <a href ="http://localhost:8501/"><button className="lastbutton" style={{ fontSize: '19px', fontFamily: 'sans-serif' }}>
               Get Started
-            </button>
+            </button></a>
           </center>
         </div>    
         
@@ -138,7 +138,7 @@ function App() {
             <ul className="Footer-list">
               <li><a href="#features">Features</a></li>
               <li><a href="#how-it-works">How It Works</a></li>
-              <li><a href="#get-started">Get Started</a></li>
+              <li><a href="http://localhost:8501/">Get Started</a></li>
               <li><a href="#contact">Contact Us</a></li>
             </ul>
           </div>
