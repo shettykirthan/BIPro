@@ -4,16 +4,15 @@ from AutoClean import AutoClean  # Ensure you have AutoClean installed
 
 def show_page():
     st.title("Data Cleaning Tool")  # No need to set page config here again
+    
+    
 
     uploaded_file = st.file_uploader("Choose a CSV file", type=['csv'])
 
     if uploaded_file:
-        original_data = pd.read_csv(uploaded_file,encoding='ISO-8859-1')
+        original_data = pd.read_csv(uploaded_file, encoding='ISO-8859-1')
         st.write("Filename:", uploaded_file.name)
         st.write("Original Data Preview:", original_data.head())
-
-        # Define the options for different cleaning tasks
-        # Rest of the code stays the same...
 
         # Define the options for different cleaning tasks
         mode = {
@@ -119,10 +118,10 @@ def show_page():
             else:
                 selected_outlier_param = outlier_param[outlier_param_option]
 
-            logfile_option = st.sidebar.selectbox('Generate logfile?', list(logfile.keys()))
+            logfile_option = st.sidebar.selectbox('Log processing:', list(logfile.keys()))
             selected_logfile = logfile[logfile_option]
 
-            verbose_option = st.sidebar.selectbox('Verbose mode?', list(verbose.keys()))
+            verbose_option = st.sidebar.selectbox('Verbose output:', list(verbose.keys()))
             selected_verbose = verbose[verbose_option]
 
             if st.button('Run AutoClean 🚀'):
@@ -130,12 +129,12 @@ def show_page():
                     cleaner = AutoClean(
                         original_data,
                         mode=selected_mode,
-                        duplicates=selected_duplicates,
-                        missing_num=selected_missing_num,
-                        missing_categ=selected_missing_categ,
-                        encode_categ=selected_encode_categ,
+                        handle_duplicates=selected_duplicates,
+                        handle_missing_num=selected_missing_num,
+                        handle_missing_categ=selected_missing_categ,
+                        encoding=selected_encode_categ,
                         extract_datetime=selected_extract_datetime,
-                        outliers=selected_outliers,
+                        handle_outliers=selected_outliers,
                         outlier_param=selected_outlier_param,
                         logfile=selected_logfile,
                         verbose=selected_verbose
@@ -143,19 +142,14 @@ def show_page():
                     cleaned_data = cleaner.output
                     st.success("Data cleaning completed!")
 
+                    # Display original and cleaned data
                     st.subheader("Original Data")
                     st.write(original_data.head())
                     st.subheader("Cleaned Data")
                     st.write(cleaned_data.head())
 
-                    st.subheader("Statistics for Original Data")
-                    st.write(original_data.describe(include='all'))
-
-                    st.subheader("Statistics for Cleaned Data")
-                    st.write(cleaned_data.describe(include='all'))
-
-                    st.download_button('Download Cleaned Data', cleaned_data.to_csv(index=False), file_name='cleaned_data.csv')
-
+                    # Show statistics and download button...
+        
         elif initial_option == "Automated processing":
             if st.button('Run AutoClean 🚀'):
                 with st.spinner('Cleaning data...'):
@@ -166,10 +160,14 @@ def show_page():
                     cleaned_data = cleaner.output
                     st.success("Data cleaning completed!")
 
+                    # Display original and cleaned data
                     st.subheader("Original Data")
                     st.write(original_data.head())
                     st.subheader("Cleaned Data")
                     st.write(cleaned_data.head())
+
+                    # Show statistics and download button...
+
 
                     st.subheader("Statistics for Original Data")
                     st.write(original_data.describe(include='all'))

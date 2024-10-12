@@ -12,6 +12,8 @@ from langchain_ollama import ChatOllama
 # )
 
 def show_page():
+   
+
     def read_data(file):
         if file.name.endswith(".csv"):
             return pd.read_csv(file,encoding='ISO-8859-1')
