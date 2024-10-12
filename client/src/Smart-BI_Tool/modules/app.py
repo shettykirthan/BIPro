@@ -261,7 +261,7 @@ def show_page():
 
         return agraph(nodes=nodes, edges=edges, config=config)
 
-    ollama_url = "https://1fe6-34-16-168-185.ngrok-free.app/"
+    ollama_url = "https://f833-34-19-123-95.ngrok-free.app"
     llm = Ollama(model="llama3", base_url=ollama_url)
 
     st.title("RAG Graph with Neo4j, Llama3 (Ollama), and CSV Upload")

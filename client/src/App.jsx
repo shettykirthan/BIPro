@@ -21,7 +21,7 @@ function App() {
               Get Started
             </button> </a>
           </div>
-          <div className="column hide-on-mobile">
+          <div className="svg">
             <Lottie animationData={welcomeGIF} />
           </div>
         </div>

@@ -51,7 +51,7 @@ def show_page():
         st.chat_message("user").markdown(user_prompt)
         st.session_state.chat_history.append({"role":"user","content": user_prompt})
 
-        llm = ChatOllama(model="qwen2.5:7b-instruct-q8_0", temperature=0, base_url="https://6743-34-125-128-90.ngrok-free.app/")
+        llm = ChatOllama(model="qwen2.5:7b-instruct-q8_0", temperature=0, base_url="https://f833-34-19-123-95.ngrok-free.app")
 
         pandas_df_agent = create_pandas_dataframe_agent(
             llm,
