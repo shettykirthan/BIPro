@@ -1,11 +1,12 @@
 import express from "express";
 import { createChat, getUserChats } from "../controllers/userChat.controller.js";
+
 const router = express.Router();
 
-// Route to create a new chat for a user
-router.post("/:userId/csv/:csvId/chat", createChat);
+// Route to create a new chat message
+router.post("/:user_id/csv/:csv_id/chat", createChat);
 
-// Route to get all chats for a user
-router.get("/:userId/csv/:csvId/chats", getUserChats);
+// Route to retrieve chats for a specific user and CSV
+router.get("/:user_id/csv/:csv_id/chats", getUserChats);
 
 export default router;

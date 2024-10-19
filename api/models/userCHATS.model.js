@@ -3,14 +3,15 @@ import mongoose from "mongoose";
 // Chat Schema (for individual chat messages)
 const chatSchema = new mongoose.Schema(
     {
-        message: {
+        user_message: {
             type: String,
             required: true
         },
-        sender: {
-            type: String,  // Either 'user' or 'model'
-            required: true
+        model_response: {
+            type: String,
+            
         },
+        
         timestamp: {
             type: Date,
             default: Date.now

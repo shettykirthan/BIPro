@@ -1,6 +1,6 @@
 import streamlit as st
 import requests
-from modules import app, Clean, dashboard_self, Pygwalk, Overview1, Chat, vizzu
+from modules import Clean, dashboard_self, Pygwalk, Overview1, Chat, app, vizzu
 
 # Set page config
 st.set_page_config(
