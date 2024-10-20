@@ -21,7 +21,6 @@ const chatSchema = new mongoose.Schema(
 );
 
 const Chat = mongoose.model("Chats", chatSchema);
-
 // UserChat Schema (to track user chats and CSV ID)
 const userChatSchema = new mongoose.Schema(
     {
@@ -35,13 +34,19 @@ const userChatSchema = new mongoose.Schema(
             ref: "UserCSV",  // Reference to the uploaded CSV
             required: true
         },
+        chat_title: {
+            type: String,
+            default: "New Chat" // Initialize with 0 for new users
+        },
         chat_ids: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: "Chats"
         }]
+        
     },
     { timestamps: true }
 );
+
 
 const UserChat = mongoose.model("UserChats", userChatSchema);
 
