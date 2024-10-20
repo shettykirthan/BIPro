@@ -1,4 +1,4 @@
-// models/userCSV.model.js
+
 import mongoose from "mongoose";
 
 const userCSVSchema = new mongoose.Schema(

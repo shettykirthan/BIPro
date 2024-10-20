@@ -34,7 +34,7 @@ function App() {
               style={{
                 height: '3rem',
                 width: '3rem',
-                color: '#3B82F6', // text-blue-500
+                color: '#3B82F6', 
               }}
             />
             <h2 className="feature-title">Upload CSV</h2>
@@ -46,7 +46,7 @@ function App() {
               style={{
                 height: '3rem',
                 width: '3rem',
-                color: '#22C55E', // text-green-500
+                color: '#22C55E', 
               }}
             />
             <h2 className="feature-title">Interactive Dashboard</h2>
@@ -58,7 +58,7 @@ function App() {
               style={{
                 height: '3rem',
                 width: '3rem',
-                color: '#A78BFA', // text-purple-500
+                color: '#A78BFA',
               }}
             />
             <h2 className="feature-title">AI-Powered Chatbot</h2>

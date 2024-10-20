@@ -1,13 +1,13 @@
 import User from "../models/user.model.js";
 import UserCSV from "../models/userCSV.model.js";
 
-// Upload CSV without authentication
+
 export const uploadCSV = async (req, res) => {
     try {
-        const { userId } = req.params; // Extract userId from URL params
+        const { userId } = req.params; 
         const { fileName, csvData } = req.body;
 
-        // Validate user existence in the DB based on the userId in the URL
+
         const user = await User.findById(userId);
         if (!user) {
             return res.status(404).json({
@@ -42,12 +42,12 @@ export const uploadCSV = async (req, res) => {
     }
 };
 
-// Get user's CSV files without authentication
+
 export const getUserCSVs = async (req, res) => {
     try {
-        const { userId } = req.params; // Extract userId from URL params
+        const { userId } = req.params; 
 
-        // Validate user existence
+    
         const user = await User.findById(userId);
         if (!user) {
             return res.status(404).json({

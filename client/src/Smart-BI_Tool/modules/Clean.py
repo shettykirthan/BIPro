@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
-from AutoClean import AutoClean  # Ensure you have AutoClean installed
+from AutoClean import AutoClean
 
 def show_page():
-    st.title("Data Cleaning Tool")  # No need to set page config here again
+    st.title("Data Cleaning Tool")
     
     
 
@@ -14,7 +14,7 @@ def show_page():
         st.write("Filename:", uploaded_file.name)
         st.write("Original Data Preview:", original_data.head())
 
-        # Define the options for different cleaning tasks
+        
         mode = {
             "Choose option": "None",
             "Automated processing": "auto",

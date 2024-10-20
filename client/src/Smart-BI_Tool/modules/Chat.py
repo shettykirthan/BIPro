@@ -4,7 +4,7 @@ import streamlit as st
 from langchain_experimental.agents import create_pandas_dataframe_agent
 from langchain_ollama import ChatOllama
 
-# API URLs
+
 CREATE_CHAT_URL = "http://localhost:9001/api/user/{user_id}/csv/{csv_id}/chat"
 GET_ALL_CHATS_URL = "http://localhost:9001/api/user/{user_id}/chats"
 NEW_CHAT_URL = "http://localhost:9001/api/user/{user_id}/csv/{csv_id}/chat/new"
@@ -19,7 +19,7 @@ def show_page():
 
     st.title("🤖 DataFrame ChatBot - Ollama")
 
-    # Initialize session state variables
+   
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
     if "df" not in st.session_state:
@@ -54,7 +54,8 @@ def show_page():
         st.session_state.current_messages = chat.get("chat_ids", [])
         st.rerun()
 
-    # Sidebar for chat history
+    
+
     with st.sidebar:
         st.title("Chat History")
         
@@ -90,21 +91,21 @@ def show_page():
             st.session_state.csv_uploaded = True
             st.session_state.csv_id = upload_response['data']['id']
 
-    # Display current messages
+   
     for message in st.session_state.current_messages:
         with st.chat_message("user"):
             st.markdown(message["user_message"])
         with st.chat_message("assistant"):
             st.markdown(message["model_response"])
 
-    # Chat input
+   
     if st.session_state.csv_uploaded or st.session_state.selected_chat:
         user_prompt = st.chat_input("Ask LLM...")
         if user_prompt:
             with st.chat_message("user"):
                 st.markdown(user_prompt)
 
-            # Generate LLM response
+            
             llm = ChatOllama(model="qwen2.5:latest", temperature=0)
             pandas_df_agent = create_pandas_dataframe_agent(
                 llm,
@@ -122,7 +123,7 @@ def show_page():
 
             headers = {"Authorization": f"Bearer {auth_token}"}
             if not st.session_state.selected_chat:
-                # Create new chat
+            
                 new_chat_data = {
                     "user_message": user_prompt,
                     "model_response": assistant_response
@@ -133,13 +134,13 @@ def show_page():
                     headers=headers
                 )
                 if response.status_code == 201:
-                    # Update session state with the new chat
+                
                     new_message = {
                         "user_message": user_prompt,
                         "model_response": assistant_response
                     }
                     st.session_state.current_messages.append(new_message)
-                    # Get the new chat details and set as selected chat
+                    
                     chat_response = response.json()
                     st.session_state.selected_chat = {
                         "_id": chat_response.get("chatId"),
@@ -148,7 +149,7 @@ def show_page():
                         "csv_id": st.session_state.csv_id
                     }
             else:
-                # Add to existing chat
+                
                 chat_data = {
                     "user_message": user_prompt,
                     "model_response": assistant_response

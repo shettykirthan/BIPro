@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-// Chat Schema (for individual chat messages)
+
 const chatSchema = new mongoose.Schema(
     {
         user_message: {
@@ -21,7 +21,7 @@ const chatSchema = new mongoose.Schema(
 );
 
 const Chat = mongoose.model("Chats", chatSchema);
-// UserChat Schema (to track user chats and CSV ID)
+
 const userChatSchema = new mongoose.Schema(
     {
         user_id: {
@@ -31,12 +31,12 @@ const userChatSchema = new mongoose.Schema(
         },
         csv_id: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "UserCSV",  // Reference to the uploaded CSV
+            ref: "UserCSV", 
             required: true
         },
         chat_title: {
             type: String,
-            default: "New Chat" // Initialize with 0 for new users
+            default: "New Chat" 
         },
         chat_ids: [{
             type: mongoose.Schema.Types.ObjectId,
