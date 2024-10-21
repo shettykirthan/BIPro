@@ -26,8 +26,8 @@ def show_page():
 
     def display_csv_preview(df, file_name):
         st.write(f"File: {file_name}")
-        st.write("CSV Preview (First 5 rows):")
-        st.dataframe(df.head(), use_container_width=True)
+        st.write("CSV Preview :")
+        st.dataframe(df, use_container_width=True)
 
     st.title("🤖 DataFrame ChatBot - Ollama")
 

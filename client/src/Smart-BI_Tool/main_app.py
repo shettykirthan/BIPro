@@ -87,6 +87,7 @@ def auth_page():
                 
                 # Set current page to Home after successful login
                 st.session_state.current_page = "Home"
+                st.rerun()
             else:
                 st.error(response)
 
