@@ -103,8 +103,26 @@ def show_page():
 
 
     with st.sidebar:
-        st.title("Chat History")
         
+
+        # Adding CSS for button styling
+        st.markdown("""
+            <style>
+                .stButton > button {
+                    width: 95%; /* Set the width of the buttons */
+                    padding: 15px; /* Increase padding for better appearance */
+                    font-size: 16px; /* Increase font size */
+                    border-radius: 8px; /* Rounded corners */
+                    color: white; /* Text color */
+                    border: none; /* Remove border */
+                    cursor: pointer; /* Pointer cursor on hover */
+                }
+                .stButton > button:hover {
+                    background-color: #555; /* Darker shade on hover */
+                }
+            </style>
+        """, unsafe_allow_html=True)
+
         try:
             headers = {"Authorization": f"Bearer {auth_token}"}
             response = requests.get(GET_ALL_CHATS_URL.format(user_id=user_id), headers=headers)
@@ -114,10 +132,11 @@ def show_page():
             
             if st.button("+ New Chat"):
                 reset_chat_state()
+            st.title("Chat History")
 
             for chat in st.session_state.chat_history:
                 chat_title = chat.get("chat_title", "New Chat")
-                if st.button(f"📝 {chat_title}", key=chat["_id"]):
+                if st.button(f"{chat_title}", key=chat["_id"]):
                     select_chat(chat)
 
         except Exception as e:
