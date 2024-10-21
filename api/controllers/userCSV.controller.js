@@ -1,5 +1,6 @@
 import User from "../models/user.model.js";
 import UserCSV from "../models/userCSV.model.js";
+import Papa from 'papaparse'; // Add this line to import the PapaParse library
 
 export const uploadCSV = async (req, res) => {
     try {
@@ -14,6 +15,9 @@ export const uploadCSV = async (req, res) => {
             });
         }
 
+        // Parse CSV string into an array of arrays
+        const parsedData = Papa.parse(csvData, { header: false }).data; // Add this line
+
         const user = await User.findById(userId);
         if (!user) {
             return res.status(404).json({
@@ -25,7 +29,7 @@ export const uploadCSV = async (req, res) => {
         const userCSV = new UserCSV({
             user_id: userId,
             fileName,
-            csvData
+            csvData: parsedData // Change this line to store the parsed data
         });
 
         await userCSV.save();
@@ -47,6 +51,7 @@ export const uploadCSV = async (req, res) => {
         });
     }
 };
+
 export const getUserCSVs = async (req, res) => {
     try {
         const { userId } = req.params; 

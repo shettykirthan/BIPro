@@ -12,7 +12,7 @@ const userCSVSchema = new mongoose.Schema(
             required: true
         },
         csvData: {
-            type: [[String]], // An array of arrays for CSV rows
+            type: [[{type : "String"}]], // An array of arrays for CSV rows
             required: true
         }
     },
