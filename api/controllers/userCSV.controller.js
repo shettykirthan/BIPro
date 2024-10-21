@@ -59,7 +59,7 @@ export const getUserCSVs = async (req, res) => {
             });
         }
 
-        const csvFiles = await UserCSV.find({ user_id: userId }).select("fileName _id createdAt");
+        const csvFiles = await UserCSV.find({ user_id: userId });
 
         res.status(200).json({
             success: true,
@@ -70,6 +70,42 @@ export const getUserCSVs = async (req, res) => {
         res.status(500).json({
             success: false,
             message: "Error retrieving CSV files",
+            error: error.message
+        });
+    }
+};
+
+export const getSingleUserCSV = async (req, res) => {
+    try {
+        const { userId, csvId } = req.params; 
+
+        // Validate user existence
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            });
+        }
+
+        // Find the CSV file by csvId and userId
+        const csvFile = await UserCSV.findOne({ _id: csvId, user_id: userId });
+        if (!csvFile) {
+            return res.status(404).json({
+                success: false,
+                message: "CSV file not found"
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            csvData: csvFile.csvData // Return only the CSV data
+        });
+    } catch (error) {
+        console.error("Get Single CSV Error:", error);
+        res.status(500).json({
+            success: false,
+            message: "Error retrieving CSV file",
             error: error.message
         });
     }
