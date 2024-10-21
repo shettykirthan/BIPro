@@ -1,11 +1,10 @@
-
 import mongoose from "mongoose";
 
 const userCSVSchema = new mongoose.Schema(
     {
         user_id: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "User", 
+            ref: "User",
             required: true
         },
         fileName: {
@@ -13,7 +12,7 @@ const userCSVSchema = new mongoose.Schema(
             required: true
         },
         csvData: {
-            type: Array,
+            type: [[String]], // An array of arrays for CSV rows
             required: true
         }
     },
