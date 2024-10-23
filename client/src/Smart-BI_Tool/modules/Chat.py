@@ -170,7 +170,7 @@ def show_page():
                 st.markdown(user_prompt)
 
             if st.session_state.df is not None:
-                llm = ChatOllama(model="qwen2.5:latest", temperature=0)
+                llm = ChatOllama(model="qwen2.5:3b", temperature=0)
                 pandas_df_agent = create_pandas_dataframe_agent(
                     llm,
                     st.session_state.df,
