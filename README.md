@@ -25,15 +25,19 @@ Business Insight Pro is a tool designed to provide detailed analysis of business
     ```
 
 ### Frontend Setup
-1. Install frontend dependencies:
+1. Navigate to the `client` folder:
+    ```bash
+    cd client
+    ```
+2. Install frontend dependencies:
     ```bash
     npm install
     ```
-2. Run the frontend:
+3. Run the frontend:
     ```bash
     npm start
     ```
-3. To run the welcome page:
+4. To run the welcome page:
     ```bash
     npm run dev
     ```
