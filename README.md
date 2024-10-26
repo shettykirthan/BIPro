@@ -6,7 +6,7 @@ Business Insight Pro is a tool designed to provide detailed analysis of business
 ## Prerequisites
 - **Ollama** installed on your local system (required for running the `qwen2.5` model).
 - **Node.js** installed for running both backend and frontend.
-- **MongoCompass** (local MongoDB database).
+- **MongoDB** as the database solution.
 
 ## Setup Instructions
 
@@ -19,7 +19,12 @@ Business Insight Pro is a tool designed to provide detailed analysis of business
     ```bash
     npm install
     ```
-3. Run the backend in development mode:
+3. Set up environment variables by creating a `.env` file in the `api` folder with the following content:
+    ```bash
+    MONGO=<Your MongoDB Connection String>
+    JWT_SECRETE=<Your JWT Secret>
+    ```
+4. Run the backend in development mode:
     ```bash
     npm run dev
     ```
@@ -43,6 +48,5 @@ Business Insight Pro is a tool designed to provide detailed analysis of business
     ```
 
 ## Notes
-- The backend is connected to a local MongoDB instance using MongoCompass.
+- The backend is connected to MongoDB. Replace `<Your MongoDB Connection String>` in the `.env` file with your actual MongoDB connection string.
 - Ensure Ollama is installed and configured correctly to run the `qwen2.5` model.
-
