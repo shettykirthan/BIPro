@@ -22,7 +22,7 @@ Business Insight Pro is a tool designed to provide detailed analysis of business
 3. Set up environment variables by creating a `.env` file in the `api` folder with the following content:
     ```bash
     MONGO=<Your MongoDB Connection String>
-    JWT_SECRETE=<Your JWT Secret>
+    JWT_SECRET=<Your JWT Secret>
     ```
 4. Run the backend in development mode:
     ```bash
