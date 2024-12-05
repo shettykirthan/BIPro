@@ -153,6 +153,7 @@ function App() {
           <div className="footer-column">
             <h3 className="Footer-title">About Us</h3>
             <ul className="Footer-list">
+              <li>Harshal Rodrigues</li>
               <li>Sarvajith Adyanthaya</li>
               <li>Kirthan Shetty</li>
               <li>Shreevathsa Tantry</li>
@@ -164,6 +165,7 @@ function App() {
           <div className="footer-column">
             <h3 className="Footer-title">Contact Us</h3>
             <ul className="Footer-list">
+              <li>nnm22ad021@nmamit.in</li>
               <li>nnm22ad048@nmamit.in</li>
               <li>nnm22ad051@nmamit.in</li>
               <li>nnm22ad054@nmamit.in</li>
