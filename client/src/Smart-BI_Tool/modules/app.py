@@ -261,7 +261,7 @@ def show_page():
 
         return agraph(nodes=nodes, edges=edges, config=config)
 
-    ollama_url = "https://813f-34-83-7-91.ngrok-free.app"
+    ollama_url = "https://3564-34-91-97-238.ngrok-free.app"
     llm = Ollama(model="llama3.1:8b-instruct-q8_0", base_url=ollama_url)
 
     st.title("Knowledge Graph")
@@ -284,7 +284,7 @@ def show_page():
             except Exception as e:
                 st.error(f"An error occurred while deleting nodes: {e}")
 
-        st.subheader("Cleaned and converted data")
+        # st.subheader("Cleaned and converted data")
         with st.spinner("Cleaning and converting to schema..."):
             pipeline = AutoClean(dataset)
             txt_file = "cleaned_customers.csv"
@@ -336,5 +336,15 @@ def show_page():
         graph_visualization = visualize_graph()
         if graph_visualization:
             st.write(graph_visualization)
+            # Add Neo4j browser button
+            
+
         else:
             st.warning("No data available for visualization.")
+        st.markdown("""
+                <a href="http://localhost:7474/browser/" target="_blank">
+                    <button style="background-color: #666; color: white; padding: 10px; border: none; border-radius: 5px;">
+                        Get Neo4j Representation
+                    </button>
+                </a>
+            """, unsafe_allow_html=True)
