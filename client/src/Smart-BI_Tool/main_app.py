@@ -13,12 +13,14 @@ SIGNIN_URL = "http://localhost:9001/api/auth/signin"
 SIGNUP_URL = "http://localhost:9001/api/auth/signup"
 
 # Helper functions for API authentication
-def signup(username, email, password):
+def signup(username, email, password , age , organization):
     try:
         response = requests.post(SIGNUP_URL, json={
             "username": username,
             "email": email,
-            "password": password
+            "password": password,
+            "age":age,
+            "Organization":organization,
         })
         if response.status_code == 201:
             return True, "Account created successfully!"
@@ -65,8 +67,10 @@ def auth_page():
         new_username = st.text_input("Enter a username")
         new_email = st.text_input("Enter an email")
         new_password = st.text_input("Enter a password", type='password')
+        age=st.text_input("Age")
+        Organization= st.text_input("Organization")
         if st.button("Sign Up"):
-            success, message = signup(new_username, new_email, new_password)
+            success, message = signup(new_username, new_email, new_password , age ,Organization)
             if success:
                 st.success(message)
             else:
@@ -76,6 +80,7 @@ def auth_page():
         st.subheader("Login to Your Account")
         email = st.text_input("Email")
         password = st.text_input("Password", type='password')
+        
         if st.button("Login"):
             success, response = login(email, password)
             if success:

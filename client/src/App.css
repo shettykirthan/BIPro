@@ -11,6 +11,7 @@ html, body {
   scroll-behavior: smooth;
 }
 
+
 /* General styles */
 .app-container {
   min-height: 100vh; /* Ensure full height */
@@ -36,6 +37,37 @@ html, body {
   color: #8158c9;
   font-family: 'Poppins', sans-serif; /* Change color to your preference */
 }
+/* 
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.column {
+  width: 50%;
+  flex: 1; 
+  padding: 20px; 
+}
+
+.app-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  font-family: 'Poppins', sans-serif;
+  color: #e2e8f0;
+}
+
+.app-description {
+  font-size: 1.25rem;
+  color: #94a3b8;
+  max-width: 32rem;
+  margin: 0.75rem auto 0;
+  font-family: 'Open Sans', sans-serif;
+} */
+
 
 .container {
   display: flex;
@@ -61,7 +93,8 @@ html, body {
   font-size: 1.25rem;
   color: #94a3b8;
   max-width: 32rem;
-  margin: 0.75rem auto 0;
+  text-align: center;
+  
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -160,26 +193,22 @@ html, body {
 .lastbutton span:hover {
   background: none;
 }
-
-/* Responsive container */
 .features-container {
-  display: grid;
-  grid-template-columns: 1fr; /* Default: Grid for mobile */
-  gap: 1.5rem;
-  margin-top: 3rem;
-  width: 100%;
+  display: flex; /* Change to flex for horizontal layout */
+  overflow-x: auto; /* Enables horizontal scrolling */
+  padding: 20px;
+  gap: 20px; /* Adds space between the items */
+  scroll-snap-type: x mandatory; /* Ensures smooth snapping to each feature */
 }
 
-/* Feature item */
 .feature-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex: 0 0 auto; /* Prevent items from shrinking or growing */
+  width: 300px; /* Set width for each feature item */
   background-color: #1e293b; /* bg-gray-800 */
   padding: 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* shadow-lg */
-  transition: transform 0.2s; /* Adding transition for hover effect */
+  transition: transform 0.2s;
 }
 
 .feature-item:hover {
@@ -203,12 +232,44 @@ html, body {
   color: #94a3b8;
   margin-top: 0.5rem;
   text-align: center;
+  text-align: center;
 }
+
+
+/* Optional: add smooth scrolling effect */
+.features-container {
+  scroll-behavior: smooth;
+}
+
+/* Responsive design for different screen sizes */
+
+/* 3 columns on medium screens */
+@media (max-width: 1024px) {
+  .features-container {
+    flex-wrap: nowrap;
+  }
+}
+
+/* 2 columns on smaller screens */
+@media (max-width: 768px) {
+  .features-container {
+    flex-wrap: nowrap;
+  }
+}
+
+/* 1 column on extra small screens */
+@media (max-width: 480px) {
+  .features-container {
+    flex-wrap: nowrap;
+  }
+}
+
 
 /* Button */
 .get-started-btn {
   align-items: center;
   margin-top: 3%;
+  
   background-image: linear-gradient(144deg, #56376b, #5B42F3 50%, #32585b);
   border: 0;
   border-radius: 5px;
@@ -219,11 +280,13 @@ html, body {
   font-family: 'Phantomsans', sans-serif;
   font-size: 20px;
   justify-content: center;
+  align-items: center;
   line-height: 1em;
   max-width: 100%;
-  min-width: 140px;
+  min-width: 620px;
   padding: 9px;
   text-decoration: none;
+  padding-left: 40px;
   user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
@@ -249,19 +312,11 @@ html, body {
 }
 
 @media (max-width: 768px) {
-  
   .get-started-btn {
     font-size: 24px;
     min-width: 196px;
   }
 }
-@media (max-width: 600px) {
-  
-  .svg{
-    display: none;
-  }
-}
-
 /* Footer Section */
 .Footer {
   background-color: #111010c6;
@@ -335,12 +390,89 @@ a {
 @media (min-width: 700px) {
   .features-container {
     display: flex;
-    justify-content: space-between;
-    gap: 1.5rem; /* Keep some space between items in flex layout */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
   }
 
   .feature-item {
-    max-width: 300px; /* Limit max-width for each feature */
-    width: 100%; /* Ensure the item stretches full width */
+    width: calc(25% - 2rem); /* Divides the container into 4 items per row */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
+}
+
+@media (max-width: 768px) {
+  .anime_svg {
+    display: none;
+  }
+}
+.welcome-animation {
+  position: fixed; /* Keeps the animation fixed to the screen */
+  right: 0;
+  top: 50%; /* Centers the animation vertically */
+  transform: translateY(-50%); /* Vertically centers it */
+  max-width: 300px; /* Set the max width to control the animation size */
+  max-height: 100%; /* Set the max height to prevent overflow */
+  width: auto; /* Ensures the width adjusts according to aspect ratio */
+  height: auto; /* Maintains aspect ratio */
+  z-index: 1; /* Keeps the animation above other content */
+  overflow: hidden; /* Prevents any overflow */
+}
+
+.welcome-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+
+
+.welcome-right {
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-right > div {
+  width: 100%;
+  max-width: 500px;
+}
+
+
+.welcome-left {
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Align items to the left */
+  padding: 2rem;
+  margin-left: 20%;
+  height: 100%;
+}
+
+.site-name,
+.app-title {
+  font-size: 4rem;
+  margin-bottom: 0rem;
+}
+
+.get-started-btn-link {
+  text-decoration: none;
+}
+
+.get-started-btn {
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  display: inline-block;
+  margin-top: 1rem;
 }

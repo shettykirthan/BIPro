@@ -22,6 +22,6 @@ def show_page():
 
         report = sv.analyze(df)
         report.show_html("report.html")
-        st.components.v1.html(open("report.html").read(), height=600, width=800)
+        
     else:
         st.info("Please upload a CSV or Excel file to view the DataFrame.")

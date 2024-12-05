@@ -133,11 +133,12 @@ def show_page():
             if st.button("+ New Chat"):
                 reset_chat_state()
             st.title("Chat History")
-
+            
             for chat in st.session_state.chat_history:
                 chat_title = chat.get("chat_title", "New Chat")
                 if st.button(f"{chat_title}", key=chat["_id"]):
                     select_chat(chat)
+            
 
         except Exception as e:
             st.error(f"Error loading chat history: {str(e)}")
@@ -165,12 +166,13 @@ def show_page():
 
     if st.session_state.csv_uploaded or st.session_state.selected_chat:
         user_prompt = st.chat_input("Ask LLM...")
+        
         if user_prompt:
             with st.chat_message("user"):
                 st.markdown(user_prompt)
 
             if st.session_state.df is not None:
-                llm = ChatOllama(model="qwen2.5:3b", temperature=0)
+                llm = ChatOllama(model="llama3.1:8b-instruct-q8_0", temperature=0 ,base_url="https://f20f-34-125-226-200.ngrok-free.app" )
                 pandas_df_agent = create_pandas_dataframe_agent(
                     llm,
                     st.session_state.df,
