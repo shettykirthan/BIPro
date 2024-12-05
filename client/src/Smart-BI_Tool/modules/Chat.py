@@ -212,6 +212,7 @@ def show_page():
                         "chat_title": chat_response.get("chat_title"),
                         "csv_id": st.session_state.csv_id
                     }
+                    st.rerun()
             else:
                 chat_data = {
                     "user_message": user_prompt,
