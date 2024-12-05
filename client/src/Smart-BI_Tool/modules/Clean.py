@@ -44,7 +44,7 @@ def show_page():
         }
 
         # Manual options for AutoClean
-        duplicates = {"False": False, "Auto": "auto", "True": True}
+        
         missing_num = {"False": False, "Auto": "auto", "Mean": "mean", "Median": "median", "Mode": "most_frequent", "Delete": "delete"}
         missing_categ = {"False": False, "Auto": "auto", "Mode": "most_frequent", "Delete": "delete"}
         encode_categ = {"False": False, "Auto": "auto", "One Hot Encoding": ["onehot"], "Label Encoding": ["label"]}
@@ -114,7 +114,7 @@ def show_page():
                     cleaner = AutoClean(
                         original_data,
                         mode=selected_mode,
-                        duplicates=selected_duplicates,
+                        
                         missing_num=selected_missing_num,
                         missing_categ=selected_missing_categ,
                         encode_categ=selected_encode_categ,

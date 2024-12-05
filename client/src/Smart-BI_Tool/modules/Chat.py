@@ -29,7 +29,7 @@ def show_page():
         st.write("CSV Preview :")
         st.dataframe(df, use_container_width=True)
 
-    st.title("🤖 DataFrame ChatBot - Ollama")
+    st.title("🤖 Advanced BI Assistant")
 
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
