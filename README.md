@@ -1,7 +1,7 @@
 # Business Insight Pro
 
 ## Overview
-Business Insight Pro is a tool designed to provide detailed analysis of business data from CSV files. The project includes a chatbot interface that leverages the `qwen2.5` model from Ollama for natural language interaction with the data.
+Business Insight Pro is a tool designed to provide detailed analysis of business data from CSV files. The project includes a chatbot interface that leverages the `llama` model from Ollama for natural language interaction with the data.
 
 ## Prerequisites
 - **Ollama** installed on your local system (required for running the `qwen2.5` model).
