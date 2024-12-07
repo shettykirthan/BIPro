@@ -49,4 +49,4 @@ Business Insight Pro is a tool designed to provide detailed analysis of business
 
 ## Notes
 - The backend is connected to MongoDB. Replace `<Your MongoDB Connection String>` in the `.env` file with your actual MongoDB connection string.
-- Ensure Ollama is installed and configured correctly to run the `qwen2.5` model.
+- Ensure Ollama is installed and configured correctly to run the `llama3.1:8b-instruct-q8_0` model.
