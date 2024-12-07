@@ -19,7 +19,7 @@ Business Insight Pro is a tool designed to provide detailed analysis of business
     ```bash
     npm install
     ```
-3. Set up environment variables by creating a `.env` file in the `api` folder with the following content:
+3. Set up environment variables by creating a `.env` file with the following content:
     ```bash
     MONGO=<Your MongoDB Connection String>
     JWT_SECRET=<Your JWT Secret>
